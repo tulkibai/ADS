@@ -10,7 +10,7 @@ int main() {
 
     while (std::cin >> a) {
         if (a == '!') break;
-
+ 
         if (a == '*') {
             if (!list.empty()) {
                 std::cout << list.front() + list.back() << '\n';

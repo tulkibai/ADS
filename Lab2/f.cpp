@@ -46,13 +46,22 @@ struct LinkedList {
     void add (int data, int pos) {
         int k = 0;
         Node *p = first;
+        Node *a = new Node(data);
+
         while (p) {
             if (k == pos) break;
             ++k;
             p = p->next;
         }
         
-        Node *a = new Node(data);
+        if (k != pos) {
+            Node* prev_it = last;
+            last->next = a;
+            a->prev = prev_it;
+            last = a;
+            return;
+        }
+
         if (k != 0) {
             a->prev = p->prev;
             p->prev->next = a;

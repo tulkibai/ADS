@@ -27,10 +27,9 @@ struct LinkedList {
             return;
         }
 
-        Node* prev_it = last;
         last->next = p;
+        p->prev = last;
         last = p;
-        last->prev = prev_it;
     }
 
     void print () {
@@ -54,10 +53,9 @@ struct LinkedList {
             p = p->next;
         }
         
-        if (k != pos) {
-            Node* prev_it = last;
+        if (p == nullptr) {
             last->next = a;
-            a->prev = prev_it;
+            a->prev = last;
             last = a;
             return;
         }
